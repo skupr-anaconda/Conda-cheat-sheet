@@ -135,7 +135,7 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 ### conda + jake
 
-`conda install -y conda-forge::jake && conda list | jake ddt -c`	A helpful oneliner to check your conda environments for vulnerable Open Source packages
+`conda install -y conda-forge::jake && conda list | jake ddt`	A helpful oneliner to check your conda environments for vulnerable Open Source packages
 
 ### conda + boa + mambasolver
 
