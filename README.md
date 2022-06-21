@@ -59,6 +59,8 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 `conda config --add channels pandas`	Add a new value to channels so conda looks for packages in this location
 
+`conda config --set anaconda_upload yes`
+
 ## Managing Packages, Including Python
 
 `conda list`	View list of packages and versions installed in active environment
