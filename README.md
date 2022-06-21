@@ -11,6 +11,8 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 `conda update anaconda`	Update the anaconda meta package
 
+`conda update --all` Update all packages in the environments
+
 ## Managing Environments
 
 `conda info --envs`
@@ -34,6 +36,12 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 `conda env export > puppies.yml`	Save current environment to a file
 
 `conda env create -f puppies.yml`	Load environment from a file
+
+`conda env update -n coolbase --file environment.yml`	install and/or update packages from environment.yml
+
+`CONDA_SUBDIR=osx-arm64 conda create -n test_env --dry-run python=3.8 llvm-openmp cython numpy pip "matplotlib-base>=3.0.3" "protobuf >=3.11.2,<4.0.0" "scipy >=1.3.2,<2.0.0"`	Conda dry run environment on a specific platform
+
+`for py in 3.7 3.8 3.9 3.10; do echo -e "\n*****  python $py  *****"; conda create --dry-run --quiet -n __test__ python=$py pandas=1.3.0; done`	Conda dry run creating an environment and installing packages (pandas 1.3.0) for different python versions
 
 ## Managing Python
 
@@ -69,6 +77,14 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 `conda install iopro accelerate`	Install commercial Continuum packages
 
+`conda install black isort flake8`	install python linter
+
+`conda install conda-build`
+
+`conda install m2-patch posix`	Windows only
+
+`conda install --use-local click`	
+
 `conda skeleton pypi pyinstrument`
 
 `conda build pyinstrument`	Build a package from a Python Package Index (PyPi) Package
@@ -82,3 +98,47 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 `conda remove --name bunnies beautiful-soup astroid`	Remove multiple packages from any environment
 
 `conda remove --name snakes --all`	Remove an environment
+
+## Conda World
+
+### conda-build 
+
+`conda-build .`
+
+`conda build --test /home/user/miniconda3/conda-bld/noarch/pytest-cov-2.12.1-py_0.tar.bz2`	test the package in your environment (for regression testing)
+
+`conda build gdal-feedstock	`
+
+`conda build sep`	
+
+`conda-build --python 2.7 click`
+
+`conda build gdal-feedstock --variant-config-file conda_build_config.yaml`
+
+### conda convert
+
+`conda convert --platform all ~/anaconda/conda-bld/linux-64/click-7.0-py37_0.tar.bz2 -o outputdir/`
+
+`conda convert package-1.0-py33.tar.bz2 -p win-64`
+
+### conda sekeleton
+
+`conda skeleton pypi --pypi-url <mirror-url> package_name`
+  
+`conda skeleton pypi <package name on pypi>`
+  
+`conda skeleton pypi click`
+  
+`conda skeleton pypi --recursive pyinstrument`
+
+### conda + jake
+
+`conda install -y conda-forge::jake && conda list | jake ddt -c`	A helpful oneliner to check your conda environments for vulnerable Open Source packages
+
+### conda + boa + mambasolver
+
+`conda install boa -c conda-forge`	Install boa. Use the mamba solver through mambabuild. It not only has a faster solve speed but also prints better error messages that make debugging simpler.
+
+`conda mambabuild .`	build the recipe with mambasolver
+
+`conda mambabuild myrecipe`	build the recipe with mambasolver
