@@ -41,7 +41,7 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 `CONDA_SUBDIR=osx-arm64 conda create -n test_env --dry-run python=3.8 llvm-openmp cython numpy pip "matplotlib-base>=3.0.3" "protobuf >=3.11.2,<4.0.0" "scipy >=1.3.2,<2.0.0"`	Conda dry run environment on a specific platform
 
-`for py in 3.7 3.8 3.9 3.10; do echo -e "\n*****  python $py  *****"; conda create --dry-run --quiet -n __test__ python=$py pandas=1.3.0; done`	Conda dry run creating an environment and installing packages (pandas 1.3.0) for different python versions
+`for py in 3.8 3.9 3.10; do echo -e "\n*****  python $py  *****"; conda create --dry-run --quiet -n __test__ python=$py pandas=1.4.2; done`	Conda dry run creating an environment and installing packages (pandas 1.4.2) for different python versions
 
 ## Managing Python
 
