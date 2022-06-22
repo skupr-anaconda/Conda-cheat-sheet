@@ -83,6 +83,8 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 `conda list`	View list of packages and versions installed in active environment
 
+`conda list | grep pandas` Search package in the list
+
 `conda list --show-channel-urls` List all installed packages along its channels
 
 `conda list --export > packages.env` Save to a file all packages in an environment
