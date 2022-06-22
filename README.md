@@ -15,7 +15,7 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 ## Managing Environments
 
-`conda info --envs`
+`conda info --envs` Verify environment you are right now
 
 `conda info -e`	Get a list of all my environmentsActive environment shown with *
 
@@ -27,17 +27,25 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 `conda deactivate`	Deactivate the environment
 
-`conda create -n bunnies python=3.4 astroid`	Create a new environment, specify Python version
+`conda create -n bunnies python=3.9 astroid`	Create a new environment, specify Python version
+
+`conda create -n foo instrain awscli samtools python=3.8` Create a new environment with a set of packages and specific version of Python
 
 `conda create -n flowers --clone snowflakes`	Make exact copy of an environment
 
 `conda remove -n flowers --all`	Delete an environment
 
+`conda env list` List all envs
+
 `conda env export > puppies.yml`	Save current environment to a file
+
+`conda env export --file env.yml` Saving an entire environment to a file
 
 `conda env create -f puppies.yml`	Load environment from a file
 
 `conda env update -n coolbase --file environment.yml`	install and/or update packages from environment.yml
+
+`conda env remove --name bamqc` Remove a given env
 
 `CONDA_SUBDIR=osx-arm64 conda create -n test_env --dry-run python=3.8 llvm-openmp cython numpy pip "matplotlib-base>=3.0.3" "protobuf >=3.11.2,<4.0.0" "scipy >=1.3.2,<2.0.0"`	Conda dry run environment on a specific platform
 
@@ -57,13 +65,27 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 `conda config --get channels`	Get value of the key channels from .condarc file
 
+`conda config --show channels` Knowing the active channels
+
 `conda config --add channels pandas`	Add a new value to channels so conda looks for packages in this location
 
+`conda config --add channels defaults` Adding a default channel
+
+`conda config --add channels conda-forge` Adding a channel
+
+`conda config --add channels bioconda` Adding a channel
+
 `conda config --set anaconda_upload yes`
+
+`conda config --set auto_activate_base false` Deactivating the activation of the base environment in Python
 
 ## Managing Packages, Including Python
 
 `conda list`	View list of packages and versions installed in active environment
+
+`conda list --show-channel-urls` List all installed packages along its channels
+
+`conda list --export > packages.env` Save to a file all packages in an environment
 
 `conda search beautiful-soup`	Search for a package to see if it is available to conda install
 
@@ -75,13 +97,17 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 `conda install -c pandas bottleneck`	Install a package from a specific channel
 
+`conda install scipy --channel conda-forge --channel bioconda` Specifying multiple channels when installing a package
+
 `conda search --override-channels -c defaults beautiful-soup`	Search for a package to see if it is available from the Anaconda repository
 
 `conda install iopro accelerate`	Install commercial Continuum packages
 
 `conda install black isort flake8`	install python linter
 
-`conda install conda-build`
+`conda install conda-build` Install conda-build
+
+`conda install matplotlib=1.4.3` Install a certain package version
 
 `conda install m2-patch posix`	Windows only
 
@@ -100,6 +126,8 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 `conda remove --name bunnies beautiful-soup astroid`	Remove multiple packages from any environment
 
 `conda remove --name snakes --all`	Remove an environment
+
+`conda uninstall packagename` Remove one package. Alias for conda remove
 
 ## Conda World
 
