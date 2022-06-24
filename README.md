@@ -57,6 +57,8 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 `conda search -f python`	Check versions of Python available to install
 
+`conda search ipython=8.3.0 --info | sed '/file name/,/timestamp/d'` For quick checking package dependencies (for example, for all python versions)
+
 `conda create -n snakes python=3.4`	Install different version of Python in new environment
 
 ## Managing .condarc Configuration
