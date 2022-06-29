@@ -37,11 +37,13 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 `conda env list` List all envs
 
-`conda env export > puppies.yml`	Save current environment to a file
+`conda env export > env.yml`	Save the current Package-specific environment to a file
 
 `conda env export --file env.yml` Saving an entire environment to a file
 
-`conda env create -f puppies.yml`	Load environment from a file
+`conda env export --from-history > env.yml`	Save the current Cross-platform compitible environment to a file
+
+`conda env create -f env.yml`	Load the Package-specific environment from a file
 
 `conda env update -n coolbase --file environment.yml`	install and/or update packages from environment.yml
 
@@ -89,7 +91,9 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 `conda list --show-channel-urls` List all installed packages along its channels
 
-`conda list --export > packages.env` Save to a file all packages in an environment
+`conda list --export > env.txt` Save to a Requirements file all packages in an environment
+
+`conda list > env.txt` Save a package list an a file
 
 `conda search beautiful-soup`	Search for a package to see if it is available to conda install
 
@@ -129,9 +133,12 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 `conda remove --name bunnies beautiful-soup astroid`	Remove multiple packages from any environment
 
-`conda remove --name snakes --all`	Remove an environment
+`conda remove --name snakes --all`	Remove an environment (remove all packages)
 
 `conda uninstall packagename` Remove one package. Alias for conda remove
+
+`conda clean --all` Delete unused packages and caches
+
 
 ## Conda World
 
