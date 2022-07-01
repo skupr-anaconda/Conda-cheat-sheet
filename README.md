@@ -30,6 +30,12 @@ conda install --channel defaults conda python=3.9 --yes
 conda update --channel defaults --all --yes
 ```
 
+#### Check conda and python version
+```bash
+!conda --version 
+!python --version 
+```
+
 ## Managing Conda, Miniconda, and Anaconda
 
 `conda --version` Check conda version
