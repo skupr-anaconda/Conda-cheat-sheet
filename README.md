@@ -4,15 +4,14 @@ Managing Conda, Miniconda, and Anaconda, Environments, Python, Configuration, Pa
 
 ## Install Miniconda
 
-## Install Miniconda
+### Install locally in a silent mode on linux-64
 
-Installing Miniconda in silent mode
-```
+```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
 bash ~/miniconda.sh -b -p $HOME/miniconda
 ``` 
 
-### Install miniconda on Google Colab
+### Install in jupyter notebook on Google Colab
 
 ```bash
 %%bash
@@ -23,7 +22,7 @@ chmod +x $MINICONDA_INSTALLER_SCRIPT
 ./$MINICONDA_INSTALLER_SCRIPT -b -f -p $MINICONDA_PREFIX
 ```
 
-### Install and update conda packages
+#### Install and update conda packages
 
 ```bash
 %%bash
