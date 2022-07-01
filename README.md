@@ -1,9 +1,39 @@
 # Conda cheat sheet
 
-Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Removing Packages or Environments
+Managing Conda, Miniconda, and Anaconda, Environments, Python, Configuration, Packages. Removing Packages or Environments
 
+## Install Miniconda
 
-## Managing Conda and Anaconda
+## Install Miniconda
+
+Installing Miniconda in silent mode
+```
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
+bash ~/miniconda.sh -b -p $HOME/miniconda
+``` 
+
+### Install miniconda on Google Colab
+
+```bash
+%%bash
+MINICONDA_INSTALLER_SCRIPT=Miniconda3-latest-Linux-x86_64.sh
+MINICONDA_PREFIX=/usr/local
+wget https://repo.continuum.io/miniconda/$MINICONDA_INSTALLER_SCRIPT
+chmod +x $MINICONDA_INSTALLER_SCRIPT
+./$MINICONDA_INSTALLER_SCRIPT -b -f -p $MINICONDA_PREFIX
+```
+
+### Install and update conda packages
+
+```bash
+%%bash
+conda install --channel defaults conda python=3.9 --yes
+conda update --channel defaults --all --yes
+```
+
+## Managing Conda, Miniconda, and Anaconda
+
+`conda --version` Check conda version
 
 `conda info`	 Verify conda is installed, check version
 
@@ -11,7 +41,9 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 `conda update anaconda`	Update the anaconda meta package
 
-`conda update --all` Update all packages in the environments
+`conda update --all` Update all packages in the environment
+
+`conda update --all -y` Update all packages in the environment 
 
 ## Managing Environments
 
@@ -47,7 +79,7 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 `conda env update -n coolbase --file environment.yml`	install and/or update packages from environment.yml
 
-`conda env remove --name bamqc` Remove a given env
+`conda env remove --name bamqc` Remove Virtual Environment
 
 `CONDA_SUBDIR=osx-arm64 conda create -n test_env --dry-run python=3.8 llvm-openmp cython numpy pip "matplotlib-base>=3.0.3" "protobuf >=3.11.2,<4.0.0" "scipy >=1.3.2,<2.0.0"`	Conda dry run environment on a specific platform
 
@@ -79,7 +111,9 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 `conda config --add channels bioconda` Adding a channel
 
-`conda config --set anaconda_upload yes`
+`conda config --set anaconda_upload yes` Enable uploading to Anaconda Cloud
+
+`conda config --set anaconda_upload no` Disable uploading to Anaconda Cloud
 
 `conda config --set auto_activate_base false` Deactivating the activation of the base environment in Python
 
@@ -97,11 +131,17 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 `conda search beautiful-soup`	Search for a package to see if it is available to conda install
 
+`conda search -c conda-forge black` Search Alternate Channels specify different channels as well, with the use of the -c flag
+
+`conda search conda-forge::black` Search Alternate Channels
+
 `conda install -n bunnies beautiful-soup`	Install a new package NOTE: If you do not include the name of the environment, it will install in the current active environment.
 
 `conda update beautiful-soup`	Update a package in the current environment
 
 `conda search --override-channels -c pandas bottleneck`	Search for a package in a specific location (the pandas channel on Anaconda.org)
+
+`conda install -c conda-forge black`  Installing black from the conda-forge channel
 
 `conda install -c pandas bottleneck`	Install a package from a specific channel
 
@@ -142,9 +182,17 @@ Managing Conda and Anaconda, Environments, Python, Configuration, Packages. Remo
 
 ## Conda World
 
+### Anaconda Cloud
+
+`anaconda login` Login in to Anaconda Cloud
+
+`anaconda upload C:\ProgramData\Anaconda3\conda-bld\win-64\conda_gc_test-1.2.1-3.tar.bz2` Upload artifact for win64 to your own channel in Anaconda Cloud
+
+`anaconda upload my-notebook.ipynb` Upload my-notebook.ipynb to http://notebooks.anaconda.org/<USERNAME>/my-notebook 
+
 ### conda-build 
 
-`conda-build .`
+`conda-build .` Build a recipe from the current folder
 
 `conda build --test /home/user/miniconda3/conda-bld/noarch/pytest-cov-2.12.1-py_0.tar.bz2`	test the package in your environment (for regression testing)
 
