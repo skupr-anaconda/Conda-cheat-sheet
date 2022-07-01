@@ -187,7 +187,7 @@ conda update --channel defaults --all --yes
 
 `anaconda upload C:\ProgramData\Anaconda3\conda-bld\win-64\conda_gc_test-1.2.1-3.tar.bz2` Upload artifact for win64 to your own channel in Anaconda Cloud
 
-`anaconda upload my-notebook.ipynb` Upload my-notebook.ipynb to http://notebooks.anaconda.org/<USERNAME>/my-notebook 
+`anaconda upload my-notebook.ipynb` Upload my-notebook.ipynb to `http://notebooks.anaconda.org/<USERNAME>/my-notebook`
 
 ### conda-build 
 
